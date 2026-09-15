@@ -16,13 +16,15 @@
   will-change: transform, opacity;
 }
 
-.magnetic,
-.btn,
-.tilt,
+.svc,
 .plan,
-.svc-card {
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  will-change: transform;
+.tilt,
+.pulse-card,
+.portrait,
+.story-photo,
+.quotes blockquote {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
 
 .glow-spot {

@@ -1,0 +1,79 @@
+/* 3D interaction layer */
+.scene-3d {
+  perspective: 1200px;
+  transform-style: preserve-3d;
+}
+
+.card-3d {
+  position: relative;
+  transform-style: preserve-3d;
+  transform: rotateX(0deg) rotateY(0deg) translateZ(0);
+  transition: transform 0.2s ease-out, box-shadow 0.3s ease;
+  will-change: transform;
+  overflow: hidden;
+}
+
+.card-3d .glare {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    circle at var(--gx, 50%) var(--gy, 50%),
+    rgba(255, 255, 255, 0.35),
+    transparent 45%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  mix-blend-mode: soft-light;
+  z-index: 3;
+}
+
+.card-3d.is-tilting .glare {
+  opacity: 1;
+}
+
+.card-3d .layer-front {
+  transform: translateZ(28px);
+  position: relative;
+  z-index: 2;
+}
+
+.card-3d .layer-mid {
+  transform: translateZ(14px);
+}
+
+.img-3d {
+  transform-style: preserve-3d;
+  transition: transform 0.35s ease;
+  will-change: transform;
+}
+
+.img-3d img {
+  transform: translateZ(0);
+}
+
+.float-3d {
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .card-3d,
+  .img-3d,
+  .float-3d {
+    transform: none !important;
+  }
+  .card-3d .glare {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-3d,
+  .img-3d,
+  .float-3d,
+  .glare {
+    transform: none !important;
+    transition: none !important;
+  }
+}
