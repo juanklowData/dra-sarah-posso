@@ -1,0 +1,13 @@
+{
+  "name": "dra-sarah-posso",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Sitio web profesional de la Dra. Sarah Posso — Médica Nutricionista",
+  "scripts": {
+    "start": "npx --yes serve -s . -l ${PORT:-3000}",
+    "dev": "npx --yes serve -s . -l 3000"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
