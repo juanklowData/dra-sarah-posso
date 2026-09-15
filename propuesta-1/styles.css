@@ -103,35 +103,41 @@ img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .btn:hover { transform: translateY(-2px); }
 .btn.primary { background: var(--cream); color: var(--olive); }
 .btn.ghost { border: 1px solid rgba(250, 247, 240, 0.45); color: var(--cream); }
-.scroll-hint {
-  position: absolute; left: 50%; bottom: 1.2rem; transform: translateX(-50%);
-  width: 22px; height: 36px; border: 1px solid rgba(250, 247, 240, 0.45); border-radius: 999px;
-}
-.scroll-hint span {
-  display: block; width: 4px; height: 8px; margin: 8px auto 0; border-radius: 999px; background: #fff;
-  animation: drip 1.6s ease-in-out infinite;
-}
-@keyframes drip {
-  0% { opacity: 0; transform: translateY(0); }
-  40% { opacity: 1; }
-  100% { opacity: 0; transform: translateY(12px); }
-}
 
 .marquee {
   position: relative;
   z-index: 2;
-  overflow: hidden;
-  border-block: 1px solid rgba(27, 36, 24, 0.14);
   background: #efe8d8;
-  padding: 1rem 0;
+  border-block: 1px solid rgba(27, 36, 24, 0.14);
+  padding: 1.05rem 0;
+}
+.marquee-viewport {
+  overflow: hidden;
+  width: 100%;
 }
 .track {
-  display: flex; gap: 2.5rem; width: max-content;
-  animation: slide 28s linear infinite;
-  font-family: var(--display); font-size: clamp(1.25rem, 2.5vw, 1.55rem);
-  font-weight: 600; color: #2c4028;
+  display: flex;
+  width: max-content;
+  will-change: transform;
 }
-@keyframes slide { to { transform: translateX(-50%); } }
+.track-group {
+  display: flex;
+  align-items: center;
+  gap: 1.4rem;
+  padding-right: 1.4rem;
+  font-family: var(--display);
+  font-size: clamp(1.25rem, 2.5vw, 1.55rem);
+  font-weight: 600;
+  color: #2c4028;
+  white-space: nowrap;
+}
+.track-group .dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #7a9170;
+  flex-shrink: 0;
+}
 
 .section { padding: 5rem 0; }
 .label {
@@ -214,6 +220,6 @@ h2 {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .kenburns, .track, .scroll-hint span { animation: none; }
+  .kenburns { animation: none; }
   html { scroll-behavior: auto; }
 }

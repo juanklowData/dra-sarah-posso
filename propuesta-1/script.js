@@ -3,7 +3,6 @@ const reduce = window.MX?.reduce || window.matchMedia("(prefers-reduced-motion: 
 if (!reduce && window.gsap && window.ScrollTrigger) {
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero title letter animation
   window.MX?.splitText(".split-title span");
   gsap.from(".split-title .char", {
     yPercent: 120,
@@ -24,26 +23,34 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     ease: "power3.out",
   });
 
-  // Parallax hero
   gsap.to(".hero-bg", {
-    yPercent: 28,
-    scale: 1.08,
-    ease: "none",
-    scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
-  });
-  gsap.to(".hero-inner", {
     yPercent: 18,
-    opacity: 0.15,
+    scale: 1.06,
     ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
   });
 
-  // Scroll reveals
+  // Infinite marquee (GSAP) — seamless
+  const track = document.querySelector(".track");
+  const group = document.querySelector(".track-group");
+  if (track && group) {
+    const gap = 0;
+    const distance = group.offsetWidth + gap;
+    const tween = gsap.to(track, {
+      x: -distance,
+      duration: Math.max(18, distance / 40),
+      ease: "none",
+      repeat: -1,
+    });
+
+    track.parentElement?.addEventListener("pointerenter", () => tween.timeScale(1.8));
+    track.parentElement?.addEventListener("pointerleave", () => tween.timeScale(1));
+  }
+
   gsap.utils.toArray(".reveal").forEach((el) => {
     gsap.from(el, {
       opacity: 0,
       y: 50,
-      rotateX: 8,
       duration: 0.95,
       ease: "power3.out",
       scrollTrigger: { trigger: el, start: "top 88%" },
@@ -53,18 +60,17 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
   gsap.utils.toArray(".reveal-scale").forEach((el) => {
     gsap.fromTo(
       el,
-      { clipPath: "inset(18% 12% 18% 12% round 0px)", scale: 1.12 },
+      { clipPath: "inset(18% 12% 18% 12%)", scale: 1.08 },
       {
-        clipPath: "inset(0% 0% 0% 0% round 0px)",
+        clipPath: "inset(0% 0% 0% 0%)",
         scale: 1,
-        duration: 1.25,
+        duration: 1.15,
         ease: "power3.out",
         scrollTrigger: { trigger: el, start: "top 85%" },
       }
     );
   });
 
-  // Services interactive line
   gsap.utils.toArray(".svc").forEach((el, i) => {
     gsap.from(el, {
       opacity: 0,
@@ -83,7 +89,6 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     });
   });
 
-  // Steps counter pop
   gsap.utils.toArray(".steps li").forEach((el) => {
     gsap.from(el, {
       opacity: 0,
@@ -93,7 +98,6 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     });
   });
 
-  // Gallery image hover drift
   document.querySelectorAll(".gallery-grid .g").forEach((img) => {
     img.addEventListener("pointermove", (e) => {
       const r = img.getBoundingClientRect();
@@ -106,7 +110,6 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     });
   });
 
-  // CTA band glow follow
   const cta = document.querySelector(".cta-band");
   if (cta && window.MX?.fine) {
     const spot = document.createElement("div");
@@ -114,18 +117,15 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     cta.appendChild(spot);
     cta.addEventListener("pointermove", (e) => {
       const r = cta.getBoundingClientRect();
-      gsap.to(spot, { left: e.clientX - r.left, top: e.clientY - r.top, duration: 0.45, ease: "power2.out" });
+      gsap.to(spot, {
+        left: e.clientX - r.left,
+        top: e.clientY - r.top,
+        duration: 0.45,
+        ease: "power2.out",
+      });
     });
   }
-
-  // Marquee speed up on hover
-  const track = document.querySelector(".track");
-  if (track) {
-    track.parentElement?.addEventListener("pointerenter", () => {
-      track.style.animationDuration = "12s";
-    });
-    track.parentElement?.addEventListener("pointerleave", () => {
-      track.style.animationDuration = "28s";
-    });
-  }
+} else {
+  // Static fallback: still show marquee without motion
+  document.querySelector(".marquee")?.classList.add("is-static");
 }

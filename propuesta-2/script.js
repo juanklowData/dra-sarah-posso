@@ -87,13 +87,17 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     scrollTrigger: { trigger: ".final", start: "top 80%" },
   });
 
-  // Horizontal accent on ticker
+  // Infinite marquee for ticker (HTML already has 2 copies)
   const ticker = document.querySelector(".ticker-track");
   if (ticker) {
-    gsap.to(ticker, {
-      xPercent: -8,
+    const half = ticker.scrollWidth / 2;
+    const tween = gsap.to(ticker, {
+      x: -half,
+      duration: Math.max(16, half / 45),
       ease: "none",
-      scrollTrigger: { trigger: ".ticker", scrub: true, start: "top bottom", end: "bottom top" },
+      repeat: -1,
     });
+    ticker.parentElement?.addEventListener("pointerenter", () => tween.timeScale(1.7));
+    ticker.parentElement?.addEventListener("pointerleave", () => tween.timeScale(1));
   }
 }
