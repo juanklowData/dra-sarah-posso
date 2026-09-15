@@ -67,13 +67,22 @@ img { width: 100%; height: 100%; object-fit: cover; display: block; }
   min-width: 0;
 }
 .logo-mark {
-  width: 46px;
-  height: 34px;
+  width: 42px;
+  height: 42px;
   display: block;
   flex-shrink: 0;
-  background: var(--mint);
-  -webkit-mask: url("/assets/logo-sp.svg") center / contain no-repeat;
-  mask: url("/assets/logo-sp.svg") center / contain no-repeat;
+  border-radius: 50%;
+  object-fit: cover;
+  background: #b2c28e;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+.logo:hover .logo-mark {
+  transform: translateY(-1px) scale(1.06);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.3);
+}
+.logo-text {
+  letter-spacing: 0.06em;
 }
 .nav { display: none; gap: 1rem; align-items: center; font-size: 0.88rem; color: var(--muted); }
 .pill { padding: 0.45rem 0.9rem; border-radius: 999px; background: var(--mint); color: #0c0f0d; font-weight: 600; }

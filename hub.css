@@ -24,14 +24,12 @@ body {
 
 .hub-hero { max-width: 40rem; margin-bottom: 2.5rem; }
 .hub-logo {
-  width: 120px;
-  height: 90px;
+  width: 108px;
+  height: 108px;
   display: block;
   margin-bottom: 1.35rem;
-  background: #cfe0bf;
-  -webkit-mask: url("/assets/logo-sp.svg") center / contain no-repeat;
-  mask: url("/assets/logo-sp.svg") center / contain no-repeat;
-  filter: drop-shadow(0 12px 28px rgba(0, 0, 0, 0.28));
+  border-radius: 50%;
+  filter: drop-shadow(0 14px 30px rgba(0, 0, 0, 0.3));
   animation: logoIn 0.9s ease both;
 }
 @keyframes logoIn {
