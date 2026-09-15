@@ -9,12 +9,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/hub.css" />
+  <link rel="stylesheet" href="/shared/motion.css" />
 </head>
 <body>
   <main class="hub">
     <header class="hub-hero">
       <p class="eyebrow">Propuesta comercial</p>
-      <h1>Dra. Sarah Posso</h1>
+      <h1 class="hub-title">Dra. Sarah Posso</h1>
       <p class="lead">
         Tres estilos distintos, animados y pensados para móvil.
         Elige el que mejor represente su marca.
@@ -26,7 +27,7 @@
     </header>
 
     <section class="proposals" aria-label="Propuestas">
-      <a class="proposal p1" href="/propuesta-1/">
+      <a class="proposal p1 interactive" href="/propuesta-1/">
         <div class="preview" style="--img:url('https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80')"></div>
         <div class="meta">
           <span class="num">01</span>
@@ -36,7 +37,7 @@
         </div>
       </a>
 
-      <a class="proposal p2" href="/propuesta-2/">
+      <a class="proposal p2 interactive" href="/propuesta-2/">
         <div class="preview" style="--img:url('https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80')"></div>
         <div class="meta">
           <span class="num">02</span>
@@ -46,7 +47,7 @@
         </div>
       </a>
 
-      <a class="proposal p3" href="/propuesta-3/">
+      <a class="proposal p3 interactive" href="/propuesta-3/">
         <div class="preview" style="--img:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=1200&q=80')"></div>
         <div class="meta">
           <span class="num">03</span>
@@ -57,6 +58,10 @@
       </a>
     </section>
   </main>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
+  <script src="/shared/motion.js"></script>
   <script src="/hub.js"></script>
 </body>
 </html>

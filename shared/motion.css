@@ -1,0 +1,84 @@
+.scroll-progress {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 200;
+  transform: scaleX(0);
+  transform-origin: left center;
+  background: linear-gradient(90deg, #7a9170, #cfe0bf, #f4f0e6);
+  pointer-events: none;
+}
+
+.mx-cursor,
+.mx-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 250;
+  mix-blend-mode: difference;
+  translate: -50% -50%;
+}
+.mx-cursor {
+  width: 8px;
+  height: 8px;
+  background: #fff;
+}
+.mx-cursor-ring {
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  transition: width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+}
+body.cursor-hover .mx-cursor-ring {
+  width: 64px;
+  height: 64px;
+  opacity: 0.7;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.motion-ready,
+  body.motion-ready a,
+  body.motion-ready button {
+    cursor: none;
+  }
+}
+
+.char {
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+.magnetic,
+.btn,
+.tilt,
+.plan,
+.svc-card {
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  will-change: transform;
+}
+
+.glow-spot {
+  position: absolute;
+  width: 42vmax;
+  height: 42vmax;
+  border-radius: 50%;
+  pointer-events: none;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.16), transparent 65%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  opacity: 0.7;
+  mix-blend-mode: soft-light;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .scroll-progress,
+  .mx-cursor,
+  .mx-cursor-ring,
+  .glow-spot {
+    display: none !important;
+  }
+}
