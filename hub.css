@@ -1,0 +1,115 @@
+:root {
+  --bg: #0f1410;
+  --ink: #f4f0e6;
+  --muted: #b7bfb0;
+  --accent: #a8b99a;
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; }
+body {
+  font-family: Manrope, system-ui, sans-serif;
+  color: var(--ink);
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 0%, #2a3b28, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 100% 20%, #3a2f22, transparent 45%),
+    var(--bg);
+}
+
+.hub {
+  width: min(1100px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 3.5rem 0 4rem;
+}
+
+.hub-hero { max-width: 40rem; margin-bottom: 2.5rem; }
+.eyebrow {
+  margin: 0 0 0.6rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #a8b99a;
+}
+.hub-hero h1 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: clamp(2.8rem, 9vw, 4.8rem);
+  font-weight: 400;
+  line-height: 0.95;
+}
+.lead {
+  margin: 1rem 0 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+.note {
+  margin: 1rem 0 0;
+  padding: 0.85rem 1rem;
+  border: 1px solid rgba(244, 240, 230, 0.12);
+  background: rgba(244, 240, 230, 0.04);
+  color: #c9d0c2;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.proposals {
+  display: grid;
+  gap: 1rem;
+}
+
+.proposal {
+  display: grid;
+  text-decoration: none;
+  color: inherit;
+  overflow: hidden;
+  border: 1px solid rgba(244, 240, 230, 0.1);
+  background: rgba(255, 255, 255, 0.02);
+  transition: transform 0.35s ease, border-color 0.35s ease;
+  opacity: 0;
+  transform: translateY(24px);
+}
+.proposal.is-in { opacity: 1; transform: translateY(0); transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.35s ease; }
+.proposal:hover { border-color: rgba(244, 240, 230, 0.28); transform: translateY(-4px); }
+.proposal.is-in:hover { transform: translateY(-4px); }
+
+.preview {
+  min-height: 180px;
+  background-image: linear-gradient(180deg, transparent, rgba(15, 20, 16, 0.55)), var(--img);
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.8s ease;
+}
+.proposal:hover .preview { transform: scale(1.06); }
+
+.meta { padding: 1.25rem 1.2rem 1.4rem; }
+.num {
+  display: block;
+  font-size: 0.78rem;
+  letter-spacing: 0.16em;
+  color: #a8b99a;
+  margin-bottom: 0.4rem;
+}
+.meta h2 {
+  margin: 0;
+  font-family: "Instrument Serif", Georgia, serif;
+  font-size: 1.85rem;
+  font-weight: 400;
+}
+.meta p {
+  margin: 0.45rem 0 1rem;
+  color: var(--muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+.cta {
+  display: inline-flex;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #e8f0df;
+}
+
+@media (min-width: 860px) {
+  .proposals { grid-template-columns: repeat(3, 1fr); gap: 1.1rem; }
+  .preview { min-height: 240px; }
+}

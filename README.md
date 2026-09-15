@@ -1,44 +1,34 @@
-# Dra. Sarah Posso — Sitio web
+# Dra. Sarah Posso — Propuestas web
 
-Landing page profesional para la Dra. Sarah Posso (Médica Nutricionista).
+Tres propuestas animadas, responsive y listas para Railway.
 
-## Stack
-
-- HTML / CSS / JavaScript estático
-- Despliegue listo para **Railway**
-- Dominio en **Hostinger** (DNS → Railway)
-
-## Desarrollo local
+## Cómo verlas
 
 ```bash
 npm run dev
 ```
 
-Abre `http://localhost:3000`.
+Abre `http://localhost:3000` y elige:
 
-## Deploy en Railway
+| Ruta | Estilo |
+|------|--------|
+| `/` | Selector de propuestas |
+| `/propuesta-1/` | Oliva Cinemática |
+| `/propuesta-2/` | Clínica Contemporánea |
+| `/propuesta-3/` | Botánica Luminosa |
 
-1. Conecta este repositorio en [Railway](https://railway.app).
-2. Crea un servicio desde el repo (Nixpacks detecta Node).
-3. Railway usará `npx serve` en el puerto `$PORT`.
-4. Genera un dominio Railway o conecta el dominio de Hostinger.
+## Fotos
 
-### DNS en Hostinger (dominio propio)
+Las imágenes son **placeholders de Unsplash** (comida, bienestar, profesional genérica).  
+No se pueden descargar automáticamente las fotos de Instagram (restricciones de Meta + copyright).
 
-En el panel DNS de Hostinger:
+Para la versión final, la doctora debe enviar:
+- Foto hero / retrato oficial
+- 4–6 fotos de consulta, estilo de vida o contenido propio
 
-| Tipo | Nombre | Valor |
-|------|--------|--------|
-| CNAME | `www` | `<tu-servicio>.up.railway.app` |
-| A / CNAME | `@` | Según indique Railway (Custom Domain) |
+## Deploy
 
-Luego en Railway → Settings → Networking → Custom Domain, agrega tu dominio y verifica.
+Railway usa `npx serve` en `$PORT`. Dominio: `drasarahposso.co`.
 
-## Contacto CTA
-
-WhatsApp: https://wa.link/76r34t  
+CTA WhatsApp: https://wa.link/76r34t  
 Instagram: https://www.instagram.com/dra.sarahposso/
-
-## Nota
-
-Las fotos de perfil/contenido de Instagram son propiedad de la doctora. Sustituye el hero visual por una foto oficial cuando la proporcione.
