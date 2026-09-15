@@ -1,9 +1,47 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 260" role="img" aria-label="Logo Dra. Sarah Posso">
-  <path fill="#b7c78c" d="M18 248V112a82 82 0 0 1 164 0v136z"/>
-  <g fill="none" stroke="#ffffff" stroke-width="11" stroke-linecap="round" stroke-linejoin="round">
-    <path d="M130 84c-12-20-40-30-60-18-18 10-24 32-8 48 10 10 28 16 42 22 18 8 34 16 34 36 0 26-26 42-56 42-24 0-46-12-54-30"/>
-    <path d="M96 84v120"/>
-    <path d="M96 118c32-2 54 10 54 36 0 28-24 42-54 40"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 268" role="img" aria-labelledby="t">
+  <title id="t">SP · Dra. Sarah Posso</title>
+  <defs>
+    <linearGradient id="arch" x1="18" y1="8" x2="182" y2="260" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#CDDBB0"/>
+      <stop offset="55%" stop-color="#B2C28E"/>
+      <stop offset="100%" stop-color="#9AAD72"/>
+    </linearGradient>
+  </defs>
+
+  <path fill="url(#arch)" d="M18 260V112A82 82 0 0 1 182 112V260Z"/>
+
+  <g
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+  >
+    <!-- Elegant S -->
+    <path
+      stroke-width="12"
+      d="M134 76
+         C120 56 88 50 70 64
+         C52 78 54 104 74 116
+         C94 128 122 132 132 148
+         C144 168 130 192 98 198
+         C74 203 52 194 44 176"
+    />
+    <!-- P stem -->
+    <path stroke-width="12" d="M96 70 V204"/>
+    <!-- P bowl -->
+    <path
+      stroke-width="12"
+      d="M96 108
+         C130 104 156 118 156 146
+         C156 176 130 192 96 188"
+    />
   </g>
-  <path fill="#ffffff" d="M58 186c10-4 18 2 20 10-10 4-18 2-20-10z"/>
+
+  <!-- Leaf tip -->
+  <path
+    fill="#FFFFFF"
+    d="M40 178
+       C52 168 68 172 74 186
+       C60 190 48 188 40 178Z"
+  />
 </svg>
