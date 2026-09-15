@@ -10,60 +10,72 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
     opacity: 0,
     duration: 0.95,
     ease: "power4.out",
-    stagger: 0.018,
+    stagger: 0.016,
   });
 
   gsap.from(".hero .kicker, .hero .sub, .hero .row", {
     opacity: 0,
-    y: 30,
-    duration: 0.85,
+    y: 28,
+    duration: 0.8,
     stagger: 0.1,
-    delay: 0.4,
+    delay: 0.35,
     ease: "power3.out",
   });
 
   gsap.to(".hero-media img", {
-    scale: 1.18,
-    yPercent: 8,
+    scale: 1.14,
     ease: "none",
     scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true },
+  });
+
+  gsap.from(".pulse-card", {
+    opacity: 0,
+    y: 30,
+    stagger: 0.08,
+    duration: 0.7,
+    ease: "power2.out",
+    scrollTrigger: { trigger: ".pulse-strip", start: "top 90%" },
+  });
+
+  // Count-up feel on pulse numbers
+  document.querySelectorAll(".pulse-card").forEach((card) => {
+    card.addEventListener("pointerenter", () => {
+      gsap.fromTo(card.querySelector("strong"), { scale: 1 }, { scale: 1.08, duration: 0.25, yoyo: true, repeat: 1 });
+    });
   });
 
   gsap.utils.toArray(".mask-reveal").forEach((el) => {
     gsap.fromTo(
       el,
-      { clipPath: "inset(14% 14% 14% 14%)" },
+      { clipPath: "inset(16% 16% 16% 16%)" },
       {
         clipPath: "inset(0% 0% 0% 0%)",
         ease: "none",
-        scrollTrigger: { trigger: el, start: "top 80%", end: "top 30%", scrub: true },
+        scrollTrigger: { trigger: el, start: "top 80%", end: "top 35%", scrub: true },
       }
     );
   });
 
-  // Sticky-ish services list with highlight
   gsap.utils.toArray(".svc").forEach((el, i) => {
     gsap.from(el, {
       opacity: 0,
-      x: -50,
-      duration: 0.6,
-      delay: i * 0.04,
+      x: -40,
+      duration: 0.55,
+      delay: i * 0.05,
       scrollTrigger: { trigger: el, start: "top 90%" },
     });
-
     el.addEventListener("pointerenter", () => {
       document.querySelectorAll(".svc").forEach((s) => s.classList.remove("is-hot"));
       el.classList.add("is-hot");
-      gsap.fromTo(el.querySelector("em"), { x: -10, opacity: 0 }, { x: 0, opacity: 1, duration: 0.3 });
     });
   });
 
   gsap.utils.toArray(".quotes blockquote").forEach((el, i) => {
     gsap.from(el, {
       opacity: 0,
-      y: 40,
-      rotate: i % 2 ? 1.5 : -1.5,
-      duration: 0.85,
+      y: 36,
+      rotate: i % 2 ? 1.2 : -1.2,
+      duration: 0.8,
       scrollTrigger: { trigger: el, start: "top 88%" },
     });
   });
@@ -71,33 +83,19 @@ if (!reduce && window.gsap && window.ScrollTrigger) {
   gsap.utils.toArray(".mosaic img").forEach((img) => {
     gsap.from(img, {
       opacity: 0,
-      scale: 1.15,
+      scale: 1.12,
       duration: 1,
       scrollTrigger: { trigger: img, start: "top 90%" },
     });
-    img.addEventListener("pointerenter", () => gsap.to(img, { scale: 1.05, duration: 0.45 }));
-    img.addEventListener("pointerleave", () => gsap.to(img, { scale: 1, duration: 0.45 }));
+    img.addEventListener("pointerenter", () => gsap.to(img, { scale: 1.04, duration: 0.4 }));
+    img.addEventListener("pointerleave", () => gsap.to(img, { scale: 1, duration: 0.4 }));
   });
 
   gsap.from(".final > *", {
     opacity: 0,
-    y: 36,
+    y: 32,
     stagger: 0.1,
-    duration: 0.85,
+    duration: 0.8,
     scrollTrigger: { trigger: ".final", start: "top 80%" },
   });
-
-  // Infinite marquee for ticker (HTML already has 2 copies)
-  const ticker = document.querySelector(".ticker-track");
-  if (ticker) {
-    const half = ticker.scrollWidth / 2;
-    const tween = gsap.to(ticker, {
-      x: -half,
-      duration: Math.max(16, half / 45),
-      ease: "none",
-      repeat: -1,
-    });
-    ticker.parentElement?.addEventListener("pointerenter", () => tween.timeScale(1.7));
-    ticker.parentElement?.addEventListener("pointerleave", () => tween.timeScale(1));
-  }
 }
